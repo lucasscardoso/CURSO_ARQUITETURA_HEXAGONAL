@@ -30,6 +30,7 @@ O projeto está dividido em camadas para isolar a lógica de negócio da infraes
 ## Como Executar
 1. Requisitos
 - Node.js instalado
+- altere o arquivo .env para as suas configs de banco
 - execute o comando npm i para instalar as dependencias
 - execute o comando npm run dev para executar o projeto
 

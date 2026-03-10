@@ -12,6 +12,8 @@ import DeletarUsuarioController from './util/externals/api/DeletarUsuarioControl
 import DeletarUsuario from './util/core/usuario/service/DeletarUsuario'
 import AlteraUsuario from './util/core/usuario/service/AlteraUsuario'
 import AlterarUsuarioController from './util/externals/api/AlterarUsuarioController'
+import LoginUsuario from './util/core/usuario/service/LoginUsuario'
+import LoginUsuarioController from './util/externals/api/LoginUsuarioController'
 const app = express()
 const porta = process.env.API_PORT ?? 4000
 
@@ -31,9 +33,11 @@ const registrarUsuario = new RegistrarUsuario(senhaCripto,repositorioUsuario)
 const busca = new BuscarUsuario(repositorioUsuario)
 const deleta = new DeletarUsuario(repositorioUsuario)
 const alterar = new AlteraUsuario(repositorioUsuario)
+const login = new LoginUsuario(repositorioUsuario,senhaCripto)
 
 //---- rotas abertas-----/
 new RegistrarUsuarioController (app,registrarUsuario)
 new BuscarrUsuarioController(app,busca)
 new DeletarUsuarioController(app,deleta)
 new AlterarUsuarioController(app,alterar)
+new LoginUsuarioController(app,login)

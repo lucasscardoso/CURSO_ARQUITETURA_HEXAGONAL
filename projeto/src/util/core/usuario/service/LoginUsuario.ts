@@ -9,16 +9,16 @@ export type Entrada = {
     senha: string
 }
 
-export type Saida = {usuario: Usuario,token :string}
 
-export default class LoginUsuario implements CasoDeUso<Entrada,Saida>{
+
+export default class LoginUsuario implements CasoDeUso<Entrada,Usuario>{
 
     constructor(
         private repositorio : RepositorioUsuarioPG,
         private senhaCriptografada: ProvedorCriptografia
     ){}
 
-    async executar(entrada: Entrada): Promise<Saida>{
+    async executar(entrada: Entrada): Promise<Usuario>{
         const usuarioExistente = await this.repositorio.buscarPorEmail(entrada.email)
 
         if(!usuarioExistente){
@@ -32,8 +32,7 @@ export default class LoginUsuario implements CasoDeUso<Entrada,Saida>{
         }
 
         return {
-            usuario: {...usuarioExistente,senha: undefined},
-            token: ''
+             ...usuarioExistente,senha: undefined
         }
 
     }

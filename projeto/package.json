@@ -9,7 +9,7 @@
         "test": "jest"
     },
     "keywords": [],
-    "author": "Leonardo Moura Leitão",
+    "author": "Lucas da Silva Cardoso",
     "license": "ISC",
     "devDependencies": {
         "@types/express": "^5.0.6",

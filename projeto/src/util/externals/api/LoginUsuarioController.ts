@@ -1,6 +1,7 @@
 import LoginUsuario from "@/util/core/usuario/service/LoginUsuario";
 import { Express } from 'express'
 import ProvedorJwt from "./ProvedorJwt";
+import UsuarioMiddleware from "./UsuarioMiddleware";
 
 export default class LoginUsuarioController {
 
@@ -8,7 +9,7 @@ export default class LoginUsuarioController {
         servidor: Express,
         casoDeUso: LoginUsuario
     ) {
-        servidor.post('/api/usuarios/login', async (req, resp) => {
+        servidor.post('/api/usuarios/login',async (req, resp) => {
             
             try{ const usuario =  await casoDeUso.executar({
                 email: req.body.email,
@@ -21,6 +22,7 @@ export default class LoginUsuarioController {
             })
             }catch(erro: any){
                 resp.status(400).send(erro.message)
+                
             }
           
         })     
